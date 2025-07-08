@@ -233,6 +233,7 @@
     .container {
       padding-bottom: 50px;
     }
+
   </style>
 </head>
 <body>
@@ -281,6 +282,7 @@
       </div>
 
     </div>
+
     </div>
   </div>
 
@@ -291,6 +293,15 @@
   </footer>
 
   <script>
+    <div id="oldExperienceNotice" class="old-experience-notice">
+      <span id="newExpIconContainer"></span>
+      This is the old experience, for the newest experience,
+      <a href="https://egg-timer.github.io/App-New/">click here.</a>
+    </div>
+  </div>
+  
+  <script>
+
     const timeMap = {
       soft: 300,
       medium: 420,
@@ -337,11 +348,12 @@
       }
 
       // Load and recolor the new experience icon
-      fetch('new exp.svg')
+
+      fetch('new%20exp.svg')
         .then(res => res.text())
-        .then(svgText => {
-          svgText = svgText.replace(/fill="#[0-9a-fA-F]{3,6}"/g, 'fill="#000000"');
-          document.getElementById('newExpIconContainer').innerHTML = svgText;
+        .then(svg => {
+          svg = svg.replace(/fill="#[0-9a-fA-F]{3,6}"/, 'fill="#000000"');
+          document.getElementById('newExpIconContainer').innerHTML = svg;
         })
         .catch(err => console.error('Error loading SVG:', err));
     });
